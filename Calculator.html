@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculator.css" />
+    <!-- <link rel="stylesheet" href="calculator.js"> -->
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" id="input" placeholder="0" disabled />
+      <table>
+        <tr>
+          <td onclick="equal()">=</td>
+          <td onclick="removech()">-></td>
+          <td onclick="calcad('0')">0</td>
+          <td onclick="reset()" class="clear">C</td>
+        </tr>
+        <tr>
+          <td onclick="calcad('1')">1</td>
+          <td onclick="calcad('2')">2</td>
+          <td onclick="calcad('3')">3</td>
+          <td onclick="calcad('+')" >+</td>
+        </tr>
+        <tr>
+          <td onclick="calcad('4')">4</td>
+          <td onclick="calcad('5')">5</td>
+          <td onclick="calcad('6')">6</td>
+          <td onclick="calcad('-')">-</td>
+        </tr>
+        <tr>
+          <td onclick="calcad('7')">7</td>
+          <td onclick="calcad('8')">8</td>
+          <td onclick="calcad('9')">9</td>
+          <td onclick="calcad('*')">*</td>
+        </tr>
+        <tr>
+          <td onclick="calcad('0')">0</td>
+          <td onclick="calcad('.')">.</td>
+          <td onclick="calcad('%')">%</td>
+          <td onclick="calcad('/')" >/</td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      var exp = "";
+      var input = document.getElementById("input");
+      function calcad(value) {
+        exp = exp + value;
+        input.value = exp;
+      }
+      function removech() {
+           exp = exp.substring(0,exp.length-1);
+            
+            input.value = exp;
+      }
+      function equal() {
+        if (exp.length == 0 || exp == "") {
+          alert("Need Input");
+        }
+        try {
+          ans = eval(exp);
+          input.value = ans;
+        } catch (err) {
+          alert("Invalid Input");
+        }
+      }
+      function reset() {
+        input.value = "";
+        exp = "";
+      }
+    </script>
+  </body>
+</html>
